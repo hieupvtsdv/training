@@ -1,3 +1,7 @@
 Test 1:
 Package name: cpp
 Attributrs: Tag
+Output: Tag: devel::lang:c, implemented-in::c, interface::commandline, role::dummy,
+ role::metapackage, scope::utility, suite::gnu,
+ works-with::software:source
+
