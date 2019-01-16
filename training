@@ -54,8 +54,14 @@ then
 											clear 
 											apt-cache show $name| grep -w $attributrs|head -1
 										else
-											clear	
-											apt-cache show $name |grep -w $attributrs
+											if echo md5 |grep -w $attributrs
+											then 
+												clear
+												echo "Not have Attributrs: $attributrs"
+											else
+												clear	
+												apt-cache show $name |grep -w $attributrs
+											fi
 										fi
 									fi
 								fi				
