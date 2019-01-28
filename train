@@ -4,7 +4,7 @@ a=`apt-cache show $name|cut -d" " -f-1| cut -d":" -f-1` #gan cac attributrs cho 
 n=`echo $a|wc -w` #diem so attributrs
 if [ $n != 0 ]
 then
-	s=`apt-cache show $name`  #gan all attributrs cho bien s
+	s=`apt-cache show $name`  #gan all attributrs value cho bien s
 	apt-cache show $name  #show all attributrs
 	for((i=1;i <= $n;i++))
 	do 
