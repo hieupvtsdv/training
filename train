@@ -1,0 +1,33 @@
+#!/bin/bash
+read -p "Package name : " name
+a=`apt-cache show $name|cut -d" " -f-1| cut -d":" -f-1` #gan cac attributrs cho bien a
+n=`echo $a|wc -w` #diem so attributrs
+if [ $n != 0 ]
+then
+	s=`apt-cache show $name`  #gan all attributrs cho bien s
+	apt-cache show $name  #show all attributrs
+	for((i=1;i <= $n;i++))
+	do 
+		at[$i]=`echo $a| cut -d" " -f $i` #gan attributrs thu i vao mang at
+	done
+
+	read -p "Attributrs : " attributrs
+
+	for((i=1;i<=$n;i++))
+	do
+		if [ ${at[$i]} == $attributrs ]
+		then 
+			b=${s#*${at[$i-1]}}  #xoa cac ki tu phia truoc attributrs-1
+			b=${b#*${at[$i]}":"} #xoa cac ki tu phia truoc attributrs
+			b=${b%${at[$i+1]}":"*} #xoa cac ki tu ke tu attributrs+1
+
+			echo $attributrs":"$b  #in attributrs value
+			break
+		fi
+		if [ $i == $n ]
+		then
+			echo "Not have Attributrs: " $attributrs
+		fi
+	done
+
+fi
