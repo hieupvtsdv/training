@@ -26,8 +26,9 @@ then
 		fi
 		if [ $i == $n ]
 		then
-			echo "Not have Attributrs: " $attributrs
+			echo "Not have Attributrs:" $attributrs
 		fi
 	done
-
+	else
+		echo "Not have package"
 fi
